@@ -2,6 +2,7 @@ package com.mateus.orderservice.scheduler;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.javacrumbs.shedlock.spring.annotation.SchedulerLock;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.JobParametersInvalidException;
@@ -22,7 +23,8 @@ public class JobScheduler {
     private final JobLauncher jobLauncher;
     private final Job orderJob;
 
-    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "${job.order.cron}")
+    @SchedulerLock(name = "orderSchedulerLock", lockAtMostFor = "5m")
     public void orderScheduler() {
         log.info("Initializing job process");
         try {

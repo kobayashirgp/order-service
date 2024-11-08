@@ -5,7 +5,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.mateus.orderservice.dto.OrderRequest;
 import com.mateus.orderservice.dto.OrderResponse;
 import com.mateus.orderservice.enums.OrderStatus;
-import com.mateus.orderservice.exceptions.OrderAlreadyExistsException;
+import com.mateus.orderservice.exception.OrderAlreadyExistsException;
 import com.mateus.orderservice.model.Order;
 import com.mateus.orderservice.model.Product;
 import com.mateus.orderservice.repository.OrderRepository;

@@ -1,5 +1,6 @@
 package com.mateus.orderservice.job.config;
 
+import com.mateus.orderservice.enums.OrderStatus;
 import com.mateus.orderservice.model.Order;
 import com.mateus.orderservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
@@ -60,7 +61,8 @@ public class JobOrderConfig {
         return new RepositoryItemReaderBuilder()
                 .repository(orderRepository)
                 .name("reader")
-                .methodName("findAll")
+                .arguments(OrderStatus.RECEIVED)
+                .methodName("findAllByOrderStatus")
                 .sorts(Collections.singletonMap("id", Sort.Direction.ASC))
                 .build();
     }

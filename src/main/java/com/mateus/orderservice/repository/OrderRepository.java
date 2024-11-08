@@ -1,8 +1,11 @@
 package com.mateus.orderservice.repository;
 
+import com.mateus.orderservice.enums.OrderStatus;
 import com.mateus.orderservice.model.Order;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -13,6 +16,8 @@ public interface OrderRepository extends CrudRepository<Order, Long>, PagingAndS
 
     @Query(value = "select o from Order o join fetch o.products p", countQuery = " select count(o) from Order o")
     Page<Order> search(Pageable pageable);
+
+    Slice<Order> findAllByOrderStatus(OrderStatus status, PageRequest pageRequest);
 
     boolean existsByExternalId(Long id);
 
