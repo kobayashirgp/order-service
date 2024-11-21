@@ -29,6 +29,37 @@ sudo docker compose up
 ## Swagger docs
 http://localhost:8080/swagger-ui/index.html
 
+## Order model
+
+*The "externalId" field is used to check duplicate requests, being a unique identifier managed by the producing API*
+```json
+{
+  "id": 1,
+  "externalId": 4,
+  "createdDate": "2024-11-21T17:34:14.325704Z",
+  "orderStatus": "PROCESSED",
+  "lastModifiedDate": "2024-11-21T17:35:00.099713Z",
+  "totalAmount": 45.00,
+  "products": [
+    {
+      "id": 1,
+      "description": "Product 1",
+      "amount": 10.00
+    },
+    {
+      "id": 2,
+      "description": "Product 2",
+      "amount": 15.00
+    },
+    {
+      "id": 3,
+      "description": "Product 3",
+      "amount": 20.00
+    }
+  ]
+}
+```
+
 ## Payload Examples (cUrl)
 
 * Get orders paginated
