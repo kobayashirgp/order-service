@@ -55,7 +55,6 @@ public class JobOrderConfig {
                 .build();
     }
 
-    //TODO MAKE CUSTOM QUERY WITH JOIN
     @Bean
     public ItemReader<Order> orderReader() {
         return new RepositoryItemReaderBuilder()
@@ -73,7 +72,6 @@ public class JobOrderConfig {
                 .methodName("save")
                 .repository(orderRepository)
                 .build();
-      //  orderWriter.setMethodName("save");
         return orderWriter;
     }
 
